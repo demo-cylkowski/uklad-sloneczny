@@ -1,0 +1,1755 @@
+/* Custom CSS Animations and Styles */
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+/* Ensure proper scroll padding for fixed navigation */
+html {
+    scroll-padding-top: 100px;
+}
+
+/* GLOBALNE OPTYMALIZACJE WYDAJNOŚCI */
+* {
+    /* Zmniejsz repaint i reflow dla animowanych elementów */
+    will-change: auto;
+}
+
+/* Optymalizacja GPU dla animowanych elementów */
+.sun, .sun-glow, .hero-orbit, .hero-planet {
+    transform: translateZ(0); /* Force GPU layer */
+    backface-visibility: hidden;
+}
+
+/* Prevent horizontal scroll - SIMPLE */
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 100%;
+}
+
+/* Prevent any element from extending beyond viewport */
+section, div, p, h1, h2, h3, h4, h5, h6 {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Ensure no element causes horizontal scroll */
+.facts-scroll-container {
+    overflow-x: hidden !important;
+}
+
+/* Removed - orbit-system overflow handled in main definition */
+
+/* Demo Notice - REMOVED */
+/* Navbar is now at the top */
+nav[class*="fixed"] {
+    top: 0 !important;
+}
+
+/* Hero section adjustment for navbar only */
+#hero {
+    padding-top: 80px !important; /* Desktop - adjusted for navbar only */
+    padding-bottom: 2rem;
+    overflow: visible;
+}
+
+#hero .sun-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* SYSTEM ORBIT - ZOPTYMALIZOWANY DLA MOBILE */
+#hero-solar-system {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1600px;
+    height: 1600px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 50;
+    will-change: transform; /* GPU acceleration */
+    /* Ukrywaj na urządzeniach o niskiej wydajności */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.hero-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    animation: rotate-orbit linear infinite;
+    transform-origin: center center;
+    will-change: transform; /* GPU acceleration */
+    backface-visibility: hidden; /* Optymalizacja 3D */
+}
+
+/* Rozmiary orbit i prędkości - POWIĘKSZONE 5x */
+.orbit-mercury { width: 400px; height: 400px; margin-left: -200px; margin-top: -200px; animation-duration: 15s; }
+.orbit-venus { width: 500px; height: 500px; margin-left: -250px; margin-top: -250px; animation-duration: 20s; }
+.orbit-earth { width: 600px; height: 600px; margin-left: -300px; margin-top: -300px; animation-duration: 25s; }
+.orbit-mars { width: 700px; height: 700px; margin-left: -350px; margin-top: -350px; animation-duration: 30s; }
+.orbit-jupiter { width: 900px; height: 900px; margin-left: -450px; margin-top: -450px; animation-duration: 40s; }
+.orbit-saturn { width: 1000px; height: 1000px; margin-left: -500px; margin-top: -500px; animation-duration: 50s; }
+.orbit-uranus { width: 1100px; height: 1100px; margin-left: -550px; margin-top: -550px; animation-duration: 60s; }
+.orbit-neptune { width: 1200px; height: 1200px; margin-left: -600px; margin-top: -600px; animation-duration: 70s; }
+
+/* Planety na orbitach - ZAWSZE WIDOCZNE NAD SŁOŃCEM */
+.hero-planet {
+    position: absolute;
+    top: 0;    /* Pozycja na górze orbity */
+    left: 50%; /* Wyśrodkowane w poziomie */
+    transform: translateX(-50%); /* Precyzyjne środkowanie */
+    border-radius: 50%;
+    z-index: 100; /* BARDZO WYSOKI - nad wszystkim! */
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
+}
+
+/* 🐈 ROZMIARY I POZYCJE PLANET - ZMIEŃ 'top' ŻEBY PRZESUNĄĆ PLANETY */
+.hero-planet.mercury { width: 6px; height: 6px; top: -3px; }   /* ← ZMIEŃ 'top' dla Merkurego */
+.hero-planet.venus { width: 8px; height: 8px; top: -4px; }     /* ← ZMIEŃ 'top' dla Wenus */
+.hero-planet.earth { width: 10px; height: 10px; top: -5px; }   /* ← ZMIEŃ 'top' dla Ziemi */
+.hero-planet.mars { width: 8px; height: 8px; top: -4px; }      /* ← ZMIEŃ 'top' dla Marsa */
+.hero-planet.jupiter { width: 16px; height: 16px; top: -8px; } /* ← ZMIEŃ 'top' dla Jowisza */
+.hero-planet.saturn { width: 14px; height: 14px; top: -7px; }  /* ← ZMIEŃ 'top' dla Saturna */
+.hero-planet.uranus { width: 12px; height: 12px; top: -6px; }  /* ← ZMIEŃ 'top' dla Urana */
+.hero-planet.neptune { width: 12px; height: 12px; top: -6px; } /* ← ZMIEŃ 'top' dla Neptuna */
+
+/* Animacja obrotu orbit */
+@keyframes rotate-orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Spin animation keyframes */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Parallax Stars Background - Nieskończone tło gwiazdek */
+.stars-layer-1, .stars-layer-2, .stars-layer-3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+/* Warstwa 1 - Duże jasne gwiazdy */
+.stars-layer-1 {
+    background-image: 
+        radial-gradient(2px 2px at 15px 45px, #fff, transparent),
+        radial-gradient(1px 1px at 85px 120px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 200px 80px, #eee, transparent),
+        radial-gradient(1px 1px at 320px 180px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(2px 2px at 150px 220px, #fff, transparent);
+    background-size: 400px 300px;
+}
+
+/* Warstwa 2 - Średnie gwiazdy */
+.stars-layer-2 {
+    background-image: 
+        radial-gradient(1px 1px at 60px 30px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 180px 140px, #ddd, transparent),
+        radial-gradient(1px 1px at 280px 60px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 120px 200px, #eee, transparent),
+        radial-gradient(1px 1px at 350px 160px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 40px 180px, #fff, transparent);
+    background-size: 500px 400px;
+}
+
+/* Warstwa 3 - Małe gwiazdy */
+.stars-layer-3 {
+    background-image: 
+        radial-gradient(1px 1px at 25px 70px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 140px 40px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(1px 1px at 220px 170px, #ccc, transparent),
+        radial-gradient(1px 1px at 300px 110px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 80px 250px, rgba(255,255,255,0.3), transparent),
+        radial-gradient(1px 1px at 380px 90px, #ddd, transparent),
+        radial-gradient(1px 1px at 160px 300px, rgba(255,255,255,0.5), transparent);
+    background-size: 600px 500px;
+}
+
+.stars-layer-1 {
+    animation: twinkle 3s ease-in-out infinite;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+.stars-layer-2 {
+    animation: twinkle 4s ease-in-out infinite reverse;
+    opacity: 0.7;
+    background-size: 500px 400px;
+    z-index: 2;
+}
+
+.stars-layer-3 {
+    animation: twinkle 5s ease-in-out infinite;
+    opacity: 0.5;
+    background-size: 600px 500px;
+    z-index: 3;
+}
+
+/* Globalne tło gwiazdek - jednolite na całej stronie */
+
+/* Keyframe Animations */
+@keyframes twinkle {
+    0%, 100% { 
+        filter: brightness(0.7);
+    }
+    50% { 
+        filter: brightness(1.3);
+    }
+}
+
+/* STARA animacja pulse-glow - zachowana dla kompatybilności */
+@keyframes pulse-glow {
+    0% { 
+        box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        transform: scale(1);
+    }
+    100% { 
+        box-shadow: 0 0 40px rgba(245, 158, 11, 0.8), 0 0 60px rgba(245, 158, 11, 0.4);
+        transform: scale(1.05);
+    }
+}
+
+/* NOWA ZOPTYMALIZOWANA animacja - używa tylko transform */
+@keyframes pulse-glow-optimized {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* ZOPTYMALIZOWANA animacja dla MOBILE - bardzo lekka */
+@keyframes pulse-glow-mobile {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.4;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.7;
+    }
+}
+
+@keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes planet-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Sun Styles - ZOPTYMALIZOWANE DLA MOBILE */
+.sun-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    animation: none !important;
+    flex-shrink: 0;
+    will-change: transform; /* Optymalizacja GPU */
+}
+
+.sun {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); /* Zmniejszony blur dla wydajności */
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    will-change: transform;
+}
+
+.sun-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%); /* Zmniejszona intensywność */
+    border-radius: 50%;
+    animation: pulse-glow-optimized 4s ease-in-out infinite alternate; /* Nowa zoptymalizowana animacja */
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+}
+
+/* Sun in planet format - ZOPTYMALIZOWANY */
+.planet-visual .sun-container {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+    animation: none !important;
+    flex-shrink: 0;
+    will-change: transform;
+}
+
+.planet-visual .sun {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF6347 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); /* Zmniejszony blur */
+    position: relative;
+    z-index: 5;
+    flex-shrink: 0;
+    aspect-ratio: 1/1;
+    will-change: transform;
+}
+
+.planet-visual .sun-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%); /* Zmniejszona intensywność */
+    border-radius: 50%;
+    animation: pulse-glow-optimized 4s ease-in-out infinite alternate; /* Zoptymalizowana animacja */
+    z-index: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    will-change: transform, opacity;
+}
+
+/* Navigation Styles - SIMPLIFIED */
+nav {
+    width: 100%;
+    max-width: 100vw;
+}
+
+nav .container {
+    max-width: 100%;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+nav h1 {
+    margin-left: 0;
+    flex-shrink: 0;
+}
+
+.hidden.md\\:flex {
+    flex-wrap: nowrap;
+    max-width: 100%;
+}
+
+/* Dropdown menu styles */
+.group .absolute {
+    overflow: hidden;
+}
+
+.group .absolute a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 120px;
+    position: relative;
+}
+
+.group .absolute a::after {
+    display: none !important;
+}
+
+.nav-link {
+    color: rgb(209, 213, 219);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: rgb(245, 158, 11);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+/* Removed duplicate nav-link definition */
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #F59E0B, #8B5CF6);
+    transition: width 0.3s ease;
+}
+
+.nav-link.nav-active {
+    color: rgb(245, 158, 11) !important;
+}
+
+.nav-link.nav-active::after {
+    width: 100%;
+}
+
+/* Dropdown button styles */
+.group button.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.group button.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #F59E0B, #8B5CF6);
+    transition: width 0.3s ease;
+}
+
+.group button.nav-link.nav-active {
+    color: rgb(245, 158, 11) !important;
+}
+
+.group button.nav-link.nav-active::after {
+    width: 100%;
+}
+
+/* Removed special styling for home button - now works like other sections */
+
+/* CIEKAWOSTKI - FLIP KARTY NA CAŁĄ SZEROKOŚĆ */
+.facts-scroll-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    width: 100%;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.facts-scroll-track {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: nowrap; /* Zapobiega przepakowaniu */
+    flex-direction: row; /* Wymusza kolejność HTML */
+}
+
+/* Kolejność jest randomizowana przez JavaScript */
+
+/* Responsive flip karty - breakpointy */
+@media (max-width: 1535px) {
+    /* Poniżej 1535px pokaż tylko 4 karty */
+    .facts-scroll-track .fact-item:nth-child(n+5) {
+        display: none;
+    }
+}
+
+@media (max-width: 1400px) {
+    .facts-scroll-track {
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+    
+    .facts-scroll-track .fact-item {
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 1280px) {
+    /* Poniżej 1280px pokaż tylko 3 karty */
+    .facts-scroll-track .fact-item:nth-child(n+4) {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .facts-scroll-track {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .facts-scroll-track .fact-item {
+        flex: 0 1 calc(50% - 1rem);
+        min-width: 300px;
+        max-width: 400px;
+    }
+    
+    /* Reguła nth-child przeniesiona do @media (max-width: 1280px) */
+}
+
+@media (max-width: 900px) {
+    .facts-scroll-track {
+        gap: 1rem;
+    }
+    
+    .facts-scroll-track .fact-item {
+        flex: 0 1 100%;
+        min-width: 280px;
+        max-width: 500px;
+        height: 250px;
+    }
+    
+    /* Na małych ekranach pokaż tylko pierwsze 2 ciekawostki */
+    .facts-scroll-track .fact-item:nth-child(n+3) {
+        display: none;
+    }
+    
+    .fact-card-front {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    
+    .fact-card-back {
+        padding: 1rem;
+    }
+    
+    .fact-card-back h3 {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .fact-card-back p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
+}
+
+/* FLIP KARTY - AUTOMATYCZNY ROZMIAR */
+.facts-scroll-track .fact-item {
+    flex: 1;
+    min-width: 250px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.fact-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+    border-radius: 0.75rem;
+}
+
+.fact-item:hover .fact-card {
+    transform: scale(1.02);
+}
+
+.fact-item.flipped:hover .fact-card {
+    transform: rotateY(180deg) scale(1.02);
+}
+
+.fact-item.flipped .fact-card {
+    transform: rotateY(180deg);
+}
+
+.fact-card-front,
+.fact-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fact-card-front {
+    background: linear-gradient(135deg, #8B5CF6, #3B82F6);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    z-index: 2;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.fact-card-front > div:first-child {
+    flex: 0;
+}
+
+.fact-card-front > div:last-child {
+    flex: 0;
+    margin-bottom: auto;
+}
+
+.fact-card-front::after {
+    content: "👆 Kliknij aby przeczytać więcej";
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    opacity: 0.8;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.fact-card-back {
+    background: rgba(15, 15, 35, 0.95);
+    color: white;
+    transform: rotateY(180deg);
+    flex-direction: column;
+    text-align: left;
+    justify-content: flex-start; /* Zmienione z center */
+    align-items: flex-start;
+    z-index: 1;
+    overflow-y: auto; /* Pozwól scroll na desktop */
+}
+
+/* Dostosowanie tekstu w ciekawostkach */
+.facts-scroll-track .fact-item .card-back h3 {
+    font-size: 0.9rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.4rem !important;
+    margin-top: 0 !important;
+}
+
+.facts-scroll-track .fact-item .card-back p {
+    font-size: 0.65rem !important;
+    line-height: 1.0 !important;
+    margin: 0 !important;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.facts-scroll-track .fact-item .card-back .text-3xl {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.3rem !important;
+}
+
+/* Usunięta problematyczna definicja .fact-item z height: 200px */
+
+.fact-item:hover .bg-gradient-to-br {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* Usunięte problematyczne animacje fact-appear i fact-disperse */
+/* Teraz ciekawostki przewijają się płynnie bez dodatkowych animacji */
+
+/* Event Cards Styles */
+.event-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.event-card:hover::before {
+    left: 100%;
+}
+
+.event-card:hover {
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    transform: translateY(-5px) scale(1.02);
+}
+
+/* Special event status styles */
+.event-card.event-today {
+    animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.event-card.event-soon {
+    animation: pulse-purple 3s ease-in-out infinite;
+}
+
+.event-card.event-past {
+    filter: grayscale(0.3);
+}
+
+@keyframes pulse-gold {
+    0%, 100% { 
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+    }
+}
+
+@keyframes pulse-purple {
+    0%, 100% { 
+        box-shadow: 0 0 8px rgba(139, 92, 246, 0.2);
+    }
+    50% { 
+        box-shadow: 0 0 18px rgba(139, 92, 246, 0.5);
+    }
+}
+
+/* Planet Styles */
+.planet-card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.planet-card.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.planet-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.planet-orbit {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: none; /* Remove purple orbit */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: none; /* Remove orbit animation */
+}
+
+.planet {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
+    animation: planet-rotate 10s linear infinite reverse;
+}
+
+.planet:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+/* Individual Planet Colors */
+.mercury {
+    background: radial-gradient(circle at 30% 30%, #8C7853 0%, #5C5C5C  100%);
+    box-shadow: 0 0 20px rgba(140, 120, 83, 0.5);
+}
+
+.venus {
+    background: radial-gradient(circle at 30% 30%, #FFC649 0%, #FF8C00 100%);
+    box-shadow: 0 0 20px rgba(255, 198, 73, 0.5);
+}
+
+.earth {
+    background: radial-gradient(circle at 30% 30%, #6B93D6 0%, #4F94CD 50%, #228B22 100%);
+    box-shadow: 0 0 20px rgba(107, 147, 214, 0.5);
+}
+
+.mars {
+    background: radial-gradient(circle at 30% 30%, #CD5C5C 0%, #A0522D 100%);
+    box-shadow: 0 0 20px rgba(205, 92, 92, 0.5);
+}
+
+.jupiter {
+    background: radial-gradient(circle at 30% 30%, #D8CA9D 0%, #FAD5A5 50%, #8B4513 100%);
+    box-shadow: 0 0 25px rgba(216, 202, 157, 0.6);
+    position: relative;
+}
+
+.saturn {
+    background: radial-gradient(circle at 30% 30%, #FAD5A5 0%, #DEB887 50%, #CD853F 100%);
+    box-shadow: 0 0 25px rgba(250, 213, 165, 0.6);
+    position: relative;
+}
+
+.uranus {
+    background: radial-gradient(circle at 30% 30%, #4FD0E7 0%, #3F8FBF 100%);
+    box-shadow: 0 0 20px rgba(79, 208, 231, 0.5);
+}
+
+.neptune {
+    background: radial-gradient(circle at 30% 30%, #4B70DD 0%, #4169E1 100%);
+    box-shadow: 0 0 20px rgba(75, 112, 221, 0.5);
+}
+
+/* Moon for Earth - powiększony */
+.moon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle at 30% 30%, #D3D3D3 0%, #A9A9A9 100%);
+    border-radius: 50%;
+    top: -40px;
+    right: -40px;
+    animation: orbit 8s linear infinite;
+}
+
+/* Jupiter Moons */
+.jupiter-moons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.io {
+    width: 8px;
+    height: 8px;
+    background: #FFFF99;
+    top: -40px;
+    left: 10px;
+    animation: orbit 6s linear infinite;
+}
+
+.europa {
+    width: 6px;
+    height: 6px;
+    background: #87CEEB;
+    top: 10px;
+    right: -35px;
+    animation: orbit 8s linear infinite;
+}
+
+.ganymede {
+    width: 10px;
+    height: 10px;
+    background: #8B7355;
+    bottom: -35px;
+    left: -10px;
+    animation: orbit 10s linear infinite;
+}
+
+.callisto {
+    width: 10px;
+    height: 10px;
+    background: #696969;
+    top: -15px;
+    left: -50px;
+    animation: orbit 12s linear infinite;
+}
+
+/* Mars Moons */
+.mars-moons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.phobos {
+    width: 8px;
+    height: 8px;
+    background: #8B7355;
+    top: -25px;
+    right: -25px;
+    animation: orbit 4s linear infinite;
+}
+
+.deimos {
+    width: 6px;
+    height: 6px;
+    background: #696969;
+    bottom: -20px;
+    left: -35px;
+    animation: orbit 7s linear infinite;
+}
+
+/* Saturn Moons */
+.saturn-moons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.titan {
+    width: 12px;
+    height: 12px;
+    background: #CD853F;
+    top: -45px;
+    left: -20px;
+    animation: orbit 16s linear infinite;
+}
+
+.enceladus {
+    width: 8px;
+    height: 8px;
+    background: #F0F8FF;
+    bottom: -30px;
+    right: -40px;
+    animation: orbit 9s linear infinite;
+}
+
+/* Uranus Moons */
+.uranus-moons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.miranda {
+    width: 7px;
+    height: 7px;
+    background: #A9A9A9;
+    top: -20px;
+    left: -45px;
+    animation: orbit 6s linear infinite;
+}
+
+.ariel {
+    width: 9px;
+    height: 9px;
+    background: #C0C0C0;
+    bottom: -35px;
+    left: -15px;
+    animation: orbit 10s linear infinite;
+}
+
+/* Neptune Moons */
+.neptune-moons {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.triton {
+    width: 11px;
+    height: 11px;
+    background: #B0E0E6;
+    top: -40px;
+    right: -30px;
+    animation: orbit 14s linear infinite reverse; /* Retrograde orbit */
+}
+
+/* Saturn Rings - dostosowane do większej planety */
+.saturn-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: 180px;
+    border: 4px solid rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 3px rgba(255, 215, 0, 0.4),
+        0 0 0 7px rgba(255, 215, 0, 0.3),
+        0 0 0 12px rgba(255, 215, 0, 0.2);
+}
+
+/* Uranus Rings - dostosowane do większej planety */
+.uranus-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+    width: 150px;
+    height: 150px;
+    border: 2px solid rgba(79, 208, 231, 0.4);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(79, 208, 231, 0.2);
+}
+
+/* Facts Grid */
+.facts-grid {
+    gap: 1rem;
+}
+
+.fact-item {
+    background-color: rgba(15, 15, 35, 0.5);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Text justification for planet and sun descriptions */
+.planet-info p.text-lg,
+.planet-info p.text-gray-300 {
+    text-align: justify;
+    line-height: 1.7;
+}
+
+/* ============================
+   NOWA MAPA ORBIT - rzeczywiste pozycje
+   ============================ */
+#real-orbit-map {
+    height: 600px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Planety na mapie orbit */
+.real-planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 15;
+    transition: all 0.3s ease;
+}
+
+.real-planet:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Ramki z nazwami planet - nad planetami */
+.planet-label-frame {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    pointer-events: none;
+}
+
+.planet-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #F59E0B;
+    background: rgba(15, 15, 35, 0.9);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(245, 158, 11, 0.5);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+}
+
+/* Stary styl planet-name dla kompatybilności */
+.planet-name {
+    display: none;
+}
+
+/* Orbity (pierścienie) */
+.orbit-ring {
+    border-width: 1px;
+    z-index: 5;
+}
+
+.sun-center {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle, #FFA500 0%, #FF4500 100%);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+/* Napis Słońca usunięty */
+
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 20px #FF4500; }
+    to   { box-shadow: 0 0 40px #FFA500; }
+}
+
+.orbit-line {
+    position: absolute;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+/* Zaktualizowane rozmiary orbit - równomierne odstępy */
+.orbit-1 { width: 120px; height: 120px; }
+.orbit-2 { width: 170px; height: 170px; }
+.orbit-3 { width: 220px; height: 220px; }
+.orbit-4 { width: 270px; height: 270px; }
+.orbit-5 { width: 320px; height: 320px; }
+.orbit-6 { width: 370px; height: 370px; }
+.orbit-7 { width: 420px; height: 420px; }
+.orbit-8 { width: 470px; height: 470px; }
+
+.orbit-planet {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    margin-top: -10px;
+    transform-origin: 0 0;
+    z-index: 20;
+    pointer-events: auto;
+    cursor: pointer;
+    display: block;
+}
+
+.orbit-planet .mini-planet {
+    pointer-events: none;
+}
+
+
+@keyframes orbit {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* Animacje orbit wyłączone - pozycje kontrolowane przez JavaScript w czasie rzeczywistym */
+.mercury-orbit, .venus-orbit, .earth-orbit, .mars-orbit, 
+.jupiter-orbit, .saturn-orbit, .uranus-orbit, .neptune-orbit {
+    animation: none;
+}
+
+/* Pozycje planet kontrolowane przez JavaScript w czasie rzeczywistym */
+
+/* Pozycje planet kontrolowane tylko przez JavaScript - brak początkowych pozycji */
+
+/* Planety */
+.mini-planet {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 21;
+    pointer-events: none;
+    display: block;
+}
+
+/* Usunięte - zastąpione przez nowy styl planet-label-frame */
+
+/* Kolory planet */
+.mercury-mini { background: radial-gradient(circle, #8C7853 0%, #5C5C5C 100%); }
+.venus-mini   { background: radial-gradient(circle, #FFC649 0%, #FF8C00 100%); }
+.earth-mini   { background: radial-gradient(circle, #6B93D6 0%, #228B22 100%); }
+.mars-mini    { background: radial-gradient(circle, #CD5C5C 0%, #A0522D 100%); }
+
+.jupiter-mini {
+    background: radial-gradient(circle, #D8CA9D 0%, #8B4513 100%);
+    width: 25px;
+    height: 25px;
+}
+
+.saturn-mini {
+    background: radial-gradient(circle, #FAD5A5 0%, #CD853F 100%);
+    width: 22px;
+    height: 22px;
+    position: relative;
+}
+
+.mini-saturn-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+}
+
+.uranus-mini  { background: radial-gradient(circle, #AFEEEE 0%, #4682B4 100%); }
+.neptune-mini { background: radial-gradient(circle, #4169E1 0%, #191970 100%); }
+
+/* Removed real-time indicator */
+
+/* Facts Slider */
+.facts-slider {
+    position: relative;
+    height: 300px;
+}
+
+.fact-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.5s ease-in-out;
+}
+
+.fact-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fact-slide.prev {
+    transform: translateX(-100px);
+}
+
+.slider-btn {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.5);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 0 !important;
+}
+
+.next-btn {
+    right: 0 !important;
+}
+
+.slider-btn:hover {
+    background: rgba(139, 92, 246, 0.4);
+    transform: scale(1.1);
+}
+
+.slider-dots {
+    margin-top: 3rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(139, 92, 246, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #8B5CF6;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background: rgba(139, 92, 246, 0.7);
+}
+
+/* CTA Buttons - NAD PLANETAMI */
+.cta-button, .cta-link {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 200; /* Wyżej niż planety (z-index: 100) */
+}
+
+.cta-button:hover, .cta-link:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+}
+
+.cta-button::before, .cta-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+.cta-button:hover::before, .cta-link:hover::before {
+    left: 100%;
+}
+
+/* Hero Section - ZOPTYMALIZOWANE ANIMACJE na tablets i mobile */
+@media (max-width: 1024px) {
+    /* Ukryj system orbit na tablets/mobile dla wydajności */
+    #hero-solar-system {
+        display: none !important;
+    }
+    
+    /* Słońce statyczne, bez rotacji */
+    #hero .sun-container {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Zmniejszona animacja glow dla wydajności */
+    #hero .sun-glow {
+        animation: pulse-glow-mobile 5s ease-in-out infinite alternate !important;
+    }
+    
+    /* Mniejsze słońce na tablets */
+    #hero .sun-container,
+    #hero .sun {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    #hero .sun-glow {
+        width: 180px !important;
+        height: 180px !important;
+    }
+}
+
+/* Mobile Responsive Improvements */
+@media (max-width: 768px) {
+    /* WYŁĄCZ GWIAZDY na mobile dla wydajności */
+    .stars-layer-1, .stars-layer-2, .stars-layer-3 {
+        display: none !important;
+    }
+    
+    /* Navigation mobile improvements */
+    nav .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    nav h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    #mobile-menu-btn {
+        padding: 0.5rem;
+        margin-left: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+    }
+    
+    #hero {
+        padding-top: 100px !important;
+        padding-bottom: 2rem;
+        min-height: 100vh;
+        overflow: visible;
+    }
+    
+    #hero .sun-container {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    /* Fix container spacing */
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    /* Planet sections mobile */
+    .planet-card {
+        margin-bottom: 3rem !important;
+    }
+    
+    .planet-card .grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+    
+    .planet-visual {
+        order: 1 !important;
+    }
+    
+    .planet-info {
+        order: 2 !important;
+    }
+    
+    /* Sun section mobile - zmniejszone słońce dla wydajności */
+    .planet-visual .sun-container {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .planet-visual .sun {
+        width: 180px !important;
+        height: 180px !important;
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important; /* Bardzo mały blur */
+    }
+    
+    .planet-visual .sun-glow {
+        width: 180px !important;
+        height: 180px !important;
+        animation: pulse-glow-mobile 5s ease-in-out infinite alternate !important;
+        opacity: 0.5 !important;
+    }
+    
+    /* Facts grid mobile - 2 rzędy, kompaktowo */
+    .facts-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr 1fr !important;
+        grid-template-rows: 1fr 1fr !important;
+        gap: 0.5rem !important;
+        justify-content: center;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .facts-grid .fact-item {
+        padding: 0.5rem !important;
+        font-size: 0.75rem !important;
+        text-align: center;
+        border-radius: 0.5rem;
+        min-height: 50px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .facts-grid .fact-item span {
+        font-size: 0.7rem !important;
+        line-height: 1.1;
+        display: block;
+    }
+    
+    .facts-grid .fact-item span:first-child {
+        font-weight: 600 !important;
+        margin-bottom: 0.2rem;
+    }
+    
+    /* Hide orbit map on mobile - show message instead */
+    .orbit-system,
+    #real-orbit-map {
+        display: none !important;
+    }
+    
+    /* Mobile message for orbit map */
+    #orbit-map::after {
+        content: "💻 Dla poprawnego działania aktualnej mapy orbit proszę używać komputer";
+        display: block;
+        text-align: center;
+        padding: 3rem 2rem;
+        background: rgba(15, 15, 35, 0.8);
+        border-radius: 1rem;
+        border: 2px solid rgba(245, 158, 11, 0.5);
+        color: #F59E0B;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 2rem auto;
+        max-width: 400px;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+    
+    /* All orbit elements hidden on mobile */
+    .orbit-line,
+    .sun-center,
+    .orbit-planet,
+    .planet-label,
+    #planet-info-panel {
+        display: none !important;
+    }
+    
+    /* Facts mobile - PROSTA ciekawostka BEZ flip animacji */
+    .facts-scroll-container {
+        padding: 2rem 1rem !important;
+    }
+    
+    .facts-scroll-track {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0 !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    /* Ukryj wszystkie poza pierwszą ciekawostką */
+    .facts-scroll-track .fact-item:not(:first-child) {
+        display: none !important;
+    }
+    
+    /* PROSTA KARTA - bez flip animacji */
+    .facts-scroll-track .fact-item {
+        width: 100% !important;
+        max-width: 350px !important;
+        min-width: 280px !important;
+        height: auto !important; /* Automatyczna wysokość */
+        margin: 0 !important;
+        cursor: default !important; /* Brak kursora pointer */
+        perspective: none !important; /* Bez 3D */
+    }
+    
+    /* Ukryj flip structure - pokaż tylko treść */
+    .facts-scroll-track .fact-item .fact-card {
+        transform: none !important;
+        position: static !important;
+        height: auto !important;
+    }
+    
+    .facts-scroll-track .fact-item .fact-card-front {
+        display: none !important; /* Ukryj przodnią kartę */
+    }
+    
+    .facts-scroll-track .fact-item .fact-card-back {
+        transform: none !important; /* Usuń rotateY */
+        position: static !important;
+        backface-visibility: visible !important;
+        background: rgba(15, 15, 35, 0.8) !important;
+        border: 2px solid rgba(139, 92, 246, 0.4) !important;
+        border-radius: 0.75rem !important;
+        padding: 1.5rem !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    .facts-scroll-track .fact-item .fact-card-back h3 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+        line-height: 1.2 !important;
+        color: #F59E0B !important;
+    }
+    
+    .facts-scroll-track .fact-item .fact-card-back p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        color: #D1D5DB !important;
+    }
+    
+    /* Typography mobile */
+    h1, h2 {
+        font-size: 2rem !important;
+    }
+    
+    h3 {
+        font-size: 1.5rem !important;
+    }
+    
+    .text-5xl {
+        font-size: 2.5rem !important;
+    }
+    
+    .text-4xl {
+        font-size: 2rem !important;
+    }
+    
+    /* Mobile orbit animations - updated for new sizes */
+    .orbit-1 .mini-planet { transform: translateX(60px); }
+    .orbit-2 .mini-planet { transform: translateX(85px); }
+    .orbit-3 .mini-planet { transform: translateX(110px); }
+    .orbit-4 .mini-planet { transform: translateX(135px); }
+    .orbit-5 .mini-planet { transform: translateX(160px); }
+    .orbit-6 .mini-planet { transform: translateX(185px); }
+    .orbit-7 .mini-planet { transform: translateX(210px); }
+    .orbit-8 .mini-planet { transform: translateX(235px); }
+    
+    /* Updated mobile orbit sizes to match new equal spacing */
+    .orbit-1 { width: 120px; height: 120px; }
+    .orbit-2 { width: 170px; height: 170px; }
+    .orbit-3 { width: 220px; height: 220px; }
+    .orbit-4 { width: 270px; height: 270px; }
+    .orbit-5 { width: 320px; height: 320px; }
+    .orbit-6 { width: 370px; height: 370px; }
+    .orbit-7 { width: 420px; height: 420px; }
+    .orbit-8 { width: 470px; height: 470px; }
+    
+    .facts-slider {
+        height: 350px;
+    }
+    
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    /* Sun mobile - MAKSYMALNIE ZOPTYMALIZOWANE */
+    #hero .sun-container {
+        width: 120px !important; /* Jeszcze mniejsze dla wydajności */
+        height: 120px !important;
+        animation: none !important;
+        margin: 1.5rem auto !important;
+        transform: none !important;
+    }
+    
+    #hero .sun {
+        width: 120px !important;
+        height: 120px !important;
+        animation: none !important;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important; /* Bardzo mały blur */
+        transform: none !important;
+    }
+    
+    #hero .sun-glow {
+        width: 120px !important;
+        height: 120px !important;
+        transform: translate(-50%, -50%) !important;
+        animation: pulse-glow-mobile 6s ease-in-out infinite alternate !important; /* Wolniejsza animacja */
+        opacity: 0.6 !important; /* Zmniejszona intensywność */
+    }
+    
+    /* Hide orbiting planets on mobile - keep only sun */
+    #hero .animate-spin {
+        display: none !important;
+    }
+    
+    /* Show only the sun container */
+    #hero .sun-container {
+        display: block !important;
+    }
+}
+
+/* Small screens - hide orbit map when planets extend beyond frame */
+@media (max-width: 1024px) {
+    #real-orbit-map {
+        display: none !important;
+    }
+    
+    #orbit-map::after {
+        content: "💻 Dla poprawnego działania aktualnej mapy orbit proszę używać komputera lub większego ekranu";
+        display: block;
+        text-align: center;
+        padding: 3rem 2rem;
+        background: rgba(15, 15, 35, 0.8);
+        border-radius: 1rem;
+        border: 2px solid rgba(245, 158, 11, 0.5);
+        color: #F59E0B;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 2rem auto;
+        max-width: 500px;
+        box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+    }
+}
+
+/* Extra small screens - better spacing */
+@media (max-width: 480px) {
+    nav .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    nav h1 {
+        font-size: 1.2rem !important;
+        margin-left: 0 !important;
+    }
+    
+    #mobile-menu-btn {
+        margin-left: 0.5rem;
+        font-size: 1.25rem;
+    }
+    
+    /* Better container spacing */
+    .container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+    
+    /* Facts grid single column on very small screens */
+    .facts-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .facts-grid .fact-item {
+        width: 100% !important;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    /* Mobile message smaller on very small screens */
+    #orbit-map::after {
+        font-size: 0.9rem !important;
+        padding: 2rem 1.5rem !important;
+        max-width: 280px !important;
+    }
+    
+    /* Facts very small screens - single centered fact */
+    .facts-scroll-track .fact-item:first-child {
+        min-width: 95% !important;
+        max-width: 95% !important;
+    }
+    
+    .facts-scroll-track .fact-item > div {
+        padding: 1rem !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .facts-scroll-track .fact-item h3 {
+        font-size: 1rem !important;
+    }
+    
+    .facts-scroll-track .fact-item p {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Scroll Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(45deg, #8B5CF6, #3B82F6, #F59E0B);
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
