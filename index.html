@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Układ Słoneczny - Poznaj jego tajemnice</title>
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Interaktywna strona edukacyjna o Układzie Słonecznym. Poznaj planety, ich księżyce, ciekawostki astronomiczne i rzeczywiste pozycje orbit w czasie rzeczywistym.">
     <meta name="keywords" content="układ słoneczny, planety, astronomia, edukacja, kosmos, Słońce, Merkury, Wenus, Ziemia, Mars, Jowisz, Saturn, Uran, Neptun">
     <meta name="author" content="Marsel Cylkowski">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Układ Słoneczny - Poznaj jego tajemnice">
     <meta property="og:description" content="Interaktywna podróż przez kosmos. Odkryj tajemnice planet, gwiazd i zjawisk astronomicznych w naszym kosmicznym sąsiedztwie.">
     <meta property="og:locale" content="pl_PL">
     
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Układ Słoneczny - Poznaj jego tajemnice">
     <meta name="twitter:description" content="Interaktywna podróż przez kosmos. Odkryj tajemnice planet, gwiazd i zjawisk astronomicznych.">
     
-    <!-- Theme Color -->
     <meta name="theme-color" content="#050514">
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,14 +49,12 @@
     </script>
 </head>
 <body class="bg-space-darker text-white overflow-x-hidden">
-    <!-- Parallax Stars Background -->
     <div class="fixed inset-0 z-0">
         <div class="stars-layer-1"></div>
         <div class="stars-layer-2"></div>
         <div class="stars-layer-3"></div>
     </div>
 
-    <!-- Sticky Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-space-dark/80 backdrop-blur-md border-b border-cosmic-purple/20">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
@@ -69,7 +62,6 @@
                 <div class="hidden md:flex space-x-3 text-sm">
                     <a href="#hero" class="nav-link" data-planet="home">Menu Główne</a>
                     
-                    <!-- Planets Dropdown -->
                     <div class="relative group">
                         <button class="nav-link flex items-center space-x-1 hover:text-cosmic-gold transition-colors">
                             <span>Planety</span>
@@ -101,52 +93,40 @@
         </div>
     </nav>
 
-    <!-- Hero Section - Wizualne Powitanie -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         
-        <!-- Animated Background Elements - REMOVED -->
         <div class="absolute inset-0">
         </div>
         
         <div class="container mx-auto px-6 relative z-10">
-            <!-- Main Welcome Content -->
             <div class="text-center max-w-5xl mx-auto">
-                <!-- Animated Solar System Icon -->
                 <div class="mb-8 flex justify-center">
                     <div class="relative">
                         <div class="mx-auto mb-6">
                             <div class="sun-container">
                                 <div class="sun"></div>
                                 <div id="hero-solar-system">
-                                    <!-- Mercury orbit -->
                                     <div class="hero-orbit orbit-mercury" data-planet="mercury">
                                         <div class="hero-planet mercury bg-gray-400"></div>
                                     </div>
-                                    <!-- Venus orbit -->
                                     <div class="hero-orbit orbit-venus" data-planet="venus">
                                         <div class="hero-planet venus bg-orange-300"></div>
                                     </div>
-                                    <!-- Earth orbit -->
                                     <div class="hero-orbit orbit-earth" data-planet="earth">
                                         <div class="hero-planet earth bg-blue-400"></div>
                                     </div>
-                                    <!-- Mars orbit -->
                                     <div class="hero-orbit orbit-mars" data-planet="mars">
                                         <div class="hero-planet mars bg-red-400"></div>
                                     </div>
-                                    <!-- Jupiter orbit -->
                                     <div class="hero-orbit orbit-jupiter" data-planet="jupiter">
                                         <div class="hero-planet jupiter bg-yellow-600"></div>
                                     </div>
-                                    <!-- Saturn orbit -->
                                     <div class="hero-orbit orbit-saturn" data-planet="saturn">
                                         <div class="hero-planet saturn bg-yellow-400"></div>
                                     </div>
-                                    <!-- Uranus orbit -->
                                     <div class="hero-orbit orbit-uranus" data-planet="uranus">
                                         <div class="hero-planet uranus bg-cyan-400"></div>
                                     </div>
-                                    <!-- Neptune orbit -->
                                     <div class="hero-orbit orbit-neptune" data-planet="neptune">
                                         <div class="hero-planet neptune bg-blue-600"></div>
                                     </div>
@@ -157,21 +137,17 @@
                     </div>
                 </div>
                 
-                <!-- Main Title -->
                 <h1 class="text-6xl md:text-8xl font-bold mb-6 animate-float">
                     <span class="bg-gradient-to-r from-cosmic-gold via-cosmic-purple to-cosmic-blue bg-clip-text text-transparent">
                         Układ Słoneczny
                     </span>
                 </h1>
                 
-                <!-- Subtitle -->
                 <p class="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
                     Witaj w interaktywnej podróży przez kosmos! Odkryj tajemnice planet, gwiazd i zjawisk astronomicznych 
                     w naszym kosmicznym sąsiedztwie.
                 </p>
                 
-                
-                <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center relative z-[300]">
                     <button class="cta-button bg-gradient-to-r from-cosmic-purple to-cosmic-blue px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-transform duration-300 shadow-lg" id="start-journey-btn">
                         Rozpocznij podróż <i class="fas fa-rocket ml-2"></i>
@@ -185,7 +161,6 @@
         
     </section>
     
-    <!-- Section Divider -->
     <div class="relative py-8">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center">
@@ -196,12 +171,10 @@
         </div>
     </div>
     
-    <!-- Sun Section -->
     <section id="sun-section" class="relative py-20">
         
         <div class="container mx-auto px-6 relative z-10">
 
-            <!-- Sun Section -->
             <div class="planet-card mb-20" data-planet="sun">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-visual">
@@ -249,7 +222,6 @@
                 </div>
             </div>
 
-            <!-- Sun Fun Facts -->
             <div class="bg-gradient-to-r from-cosmic-gold/10 to-cosmic-purple/10 rounded-xl p-8 border border-cosmic-gold/30 backdrop-blur-sm">
                 <h4 class="text-2xl font-bold mb-6 text-cosmic-gold text-center">Fascynujące fakty o Słońcu</h4>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -304,7 +276,6 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="relative py-8">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center">
@@ -315,12 +286,10 @@
         </div>
     </div>
 
-    <!-- Planets Section -->
     <section id="planets" class="relative py-20">
         <div class="container mx-auto px-6">
             <h2 class="text-5xl font-bold text-center mb-16 text-cosmic-gold">Planety Układu Słonecznego</h2>
             
-            <!-- Mercury -->
             <div id="mercury-section" class="planet-card mb-20" data-planet="mercury">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-visual">
@@ -372,7 +341,6 @@
                 </div>
             </div>
 
-            <!-- Venus -->
             <div id="venus-section" class="planet-card mb-20" data-planet="venus">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-info order-2 md:order-1">
@@ -424,7 +392,6 @@
                 </div>
             </div>
 
-            <!-- Earth -->
             <div id="earth-section" class="planet-card mb-20" data-planet="earth">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-visual">
@@ -478,7 +445,6 @@
                 </div>
             </div>
 
-            <!-- Mars -->
             <div id="mars-section" class="planet-card mb-20" data-planet="mars">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-info order-2 md:order-1">
@@ -534,7 +500,6 @@
                 </div>
             </div>
 
-            <!-- Jupiter -->
             <div id="jupiter-section" class="planet-card mb-20" data-planet="jupiter">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-visual">
@@ -593,7 +558,6 @@
                 </div>
             </div>
 
-            <!-- Saturn -->
             <div id="saturn-section" class="planet-card mb-20" data-planet="saturn">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-info order-2 md:order-1">
@@ -652,7 +616,6 @@
                 </div>
             </div>
 
-            <!-- Uranus -->
             <div id="uranus-section" class="planet-card mb-20" data-planet="uranus">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-visual">
@@ -712,7 +675,6 @@
                 </div>
             </div>
 
-            <!-- Neptune -->
             <div id="neptune-section" class="planet-card mb-20" data-planet="neptune">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <div class="planet-info order-2 md:order-1">
@@ -770,7 +732,6 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="relative py-8">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center">
@@ -781,20 +742,16 @@
         </div>
     </div>
 
-    <!-- Interactive Orbit Map -->
     <section id="orbit-map" class="relative py-20">
         
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-5xl font-bold text-center mb-16 text-cosmic-gold">Realne Położenie Planet</h2>
             
-            <!-- NOWA MAPA ORBIT - rzeczywiste pozycje planet -->
             <div id="real-orbit-map" class="relative max-w-6xl mx-auto bg-gradient-to-br from-space-dark/30 to-cosmic-purple/10 rounded-2xl p-12 border border-cosmic-gold/20">
-                <!-- Słońce w centrum -->
                 <div id="central-sun" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full shadow-lg z-20">
                     <div class="absolute inset-0 bg-gradient-to-br from-yellow-200/50 to-transparent rounded-full animate-pulse"></div>
                 </div>
                 
-                <!-- Orbity planet (linie) - równomierne odstępy 50px -->
                 <div class="orbit-ring mercury-ring absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-cosmic-gold/30 rounded-full" style="width: 120px; height: 120px;"></div>
                 <div class="orbit-ring venus-ring absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-cosmic-gold/30 rounded-full" style="width: 170px; height: 170px;"></div>
                 <div class="orbit-ring earth-ring absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-cosmic-gold/30 rounded-full" style="width: 220px; height: 220px;"></div>
@@ -804,7 +761,6 @@
                 <div class="orbit-ring uranus-ring absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-cosmic-gold/30 rounded-full" style="width: 420px; height: 420px;"></div>
                 <div class="orbit-ring neptune-ring absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border border-cosmic-gold/30 rounded-full" style="width: 470px; height: 470px;"></div>
                 
-                <!-- Planety - pozycje będą ustawiane przez JavaScript -->
                 <div id="planet-mercury" class="real-planet" data-planet="mercury" data-orbit-radius="60" data-name="Merkury">
                     <div class="planet-dot bg-gray-400 w-3 h-3 rounded-full"></div>
                     <div class="planet-label-frame">
@@ -854,14 +810,12 @@
                     </div>
                 </div>
                 
-                <!-- Informacja o dacie -->
                 <div class="absolute bottom-4 right-4 text-sm text-cosmic-gold/80 bg-space-dark/50 px-3 py-2 rounded-lg">
                     <div id="current-date">Aktualna data: Ładowanie...</div>
                     <div class="text-xs text-gray-400 mt-1">Pozycje aktualizowane raz na dzień</div>
                 </div>
             </div>
 
-            <!-- Planet Info Panel -->
             <div id="planet-info-panel" class="hidden mt-12 p-6 bg-space-dark/80 rounded-lg border border-cosmic-purple/30 backdrop-blur-md">
                 <h3 id="panel-title" class="text-2xl font-bold mb-4 text-cosmic-gold"></h3>
                 <p id="panel-description" class="text-gray-300"></p>
@@ -869,7 +823,6 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="relative py-8">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center">
@@ -880,7 +833,6 @@
         </div>
     </div>
 
-    <!-- Upcoming Events Section -->
     <section id="events" class="relative py-20">
         
         <div class="container mx-auto px-6 relative z-10">
@@ -890,7 +842,6 @@
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                <!-- Event 1: Jupiter Opposition -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="2025-12-07">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">🪐</div>
@@ -908,7 +859,6 @@
                     </div>
                 </div>
 
-                <!-- Event 2: Geminids Meteor Shower -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="2025-12-14">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">☄️</div>
@@ -926,7 +876,6 @@
                     </div>
                 </div>
 
-                <!-- Event 3: Venus-Jupiter Conjunction -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="2026-01-12">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">🪐</div>
@@ -944,7 +893,6 @@
                     </div>
                 </div>
 
-                <!-- Event 4: ISS Passage -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="daily">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">🛰️</div>
@@ -962,7 +910,6 @@
                     </div>
                 </div>
 
-                <!-- Event 5: Solar Eclipse -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="2045-08-12">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">🌞</div>
@@ -980,7 +927,6 @@
                     </div>
                 </div>
 
-                <!-- Event 6: Mars Opposition -->
                 <div class="event-card bg-gradient-to-br from-cosmic-purple/30 to-space-dark/70 rounded-xl border border-cosmic-gold/40 p-6 backdrop-blur-sm hover:scale-105 transition-all duration-300 hover:border-cosmic-gold/80" data-date="2025-01-19">
                     <div class="flex items-center mb-4">
                         <div class="text-4xl mr-4">🔴</div>
@@ -999,7 +945,6 @@
                 </div>
             </div>
 
-            <!-- Call to Action -->
             <div class="mt-16 text-center">
                 <div class="bg-gradient-to-r from-cosmic-purple/20 to-cosmic-gold/20 rounded-xl p-8 border border-cosmic-gold/30 backdrop-blur-sm max-w-4xl mx-auto">
                     <h3 class="text-2xl font-bold mb-4 text-cosmic-gold">Nie przegap żadnego wydarzenia!</h3>
@@ -1022,7 +967,6 @@
         </div>
     </section>
 
-    <!-- Section Divider -->
     <div class="relative py-8">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-center">
@@ -1033,17 +977,13 @@
         </div>
     </div>
 
-    <!-- Did You Know Section -->
     <section id="facts" class="relative py-20 overflow-hidden">
         
         <div class="container mx-auto px-6 relative z-10">
             <h2 class="text-5xl font-bold text-center mb-16 text-cosmic-gold">Kosmiczne Tajemnice</h2>
             
-            <!-- Scrolling Facts Container -->
             <div class="facts-scroll-container relative">
                 <div class="facts-scroll-track">
-                    <!-- NOWE CIEKAWOSTKI Z PEŁNĄ TREŚCIĄ -->
-                    <!-- Ciekawostka 1 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1057,7 +997,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 2 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1071,7 +1010,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 3 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1085,7 +1023,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 4 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1099,7 +1036,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 5 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1113,7 +1049,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 6 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1127,7 +1062,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 7 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1141,7 +1075,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 8 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1155,7 +1088,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 9 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1169,7 +1101,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 10 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1183,7 +1114,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 11 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1197,7 +1127,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 12 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1211,7 +1140,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 13 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1225,7 +1153,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 14 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1239,7 +1166,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 15 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1253,7 +1179,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 16 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1267,7 +1192,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 17 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1281,7 +1205,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 18 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1295,7 +1218,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 19 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1309,7 +1231,6 @@
                         </div>
                     </div>
                     
-                    <!-- Ciekawostka 20 -->
                     <div class="fact-item" onclick="this.classList.toggle('flipped')">
                         <div class="fact-card">
                             <div class="fact-card-front">
@@ -1328,7 +1249,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section id="cta" class="relative py-20 bg-gradient-to-br from-cosmic-purple/20 to-cosmic-blue/20">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-5xl font-bold mb-8 text-cosmic-gold">Odkryj kosmos dalej</h2>
@@ -1350,7 +1270,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="relative py-12 bg-space-darker border-t border-cosmic-purple/20">
         <div class="container mx-auto px-6 text-center">
             <p class="text-gray-400">

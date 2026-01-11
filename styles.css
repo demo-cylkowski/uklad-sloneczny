@@ -1,27 +1,24 @@
-/* Custom CSS Animations and Styles */
-
-/* Smooth scroll behavior */
 html {
     scroll-behavior: smooth;
 }
-/* Ensure proper scroll padding for fixed navigation */
+
 html {
     scroll-padding-top: 100px;
 }
 
-/* GLOBALNE OPTYMALIZACJE WYDAJNOŚCI */
+
 * {
-    /* Zmniejsz repaint i reflow dla animowanych elementów */
+   
     will-change: auto;
 }
 
-/* Optymalizacja GPU dla animowanych elementów */
+
 .sun, .sun-glow, .hero-orbit, .hero-planet {
-    transform: translateZ(0); /* Force GPU layer */
+    transform: translateZ(0);
     backface-visibility: hidden;
 }
 
-/* Prevent horizontal scroll - SIMPLE */
+
 body {
     overflow-x: hidden;
     max-width: 100vw;
@@ -35,29 +32,29 @@ body {
     max-width: 100%;
 }
 
-/* Prevent any element from extending beyond viewport */
+
 section, div, p, h1, h2, h3, h4, h5, h6 {
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-/* Ensure no element causes horizontal scroll */
+
 .facts-scroll-container {
     overflow-x: hidden !important;
 }
 
-/* Removed - orbit-system overflow handled in main definition */
 
-/* Demo Notice - REMOVED */
-/* Navbar is now at the top */
+
+
+
 nav[class*="fixed"] {
     top: 0 !important;
 }
 
-/* Hero section adjustment for navbar only */
+
 #hero {
-    padding-top: 80px !important; /* Desktop - adjusted for navbar only */
+    padding-top: 80px !important;
     padding-bottom: 2rem;
     overflow: visible;
 }
@@ -67,7 +64,7 @@ nav[class*="fixed"] {
     margin-bottom: 1rem;
 }
 
-/* SYSTEM ORBIT - ZOPTYMALIZOWANY DLA MOBILE */
+
 #hero-solar-system {
     position: absolute;
     top: 50%;
@@ -77,8 +74,8 @@ nav[class*="fixed"] {
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 50;
-    will-change: transform; /* GPU acceleration */
-    /* Ukrywaj na urządzeniach o niskiej wydajności */
+    will-change: transform;
+   
     transform-style: preserve-3d;
     backface-visibility: hidden;
 }
@@ -90,11 +87,11 @@ nav[class*="fixed"] {
     border-radius: 50%;
     animation: rotate-orbit linear infinite;
     transform-origin: center center;
-    will-change: transform; /* GPU acceleration */
-    backface-visibility: hidden; /* Optymalizacja 3D */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
-/* Rozmiary orbit i prędkości - POWIĘKSZONE 5x */
+
 .orbit-mercury { width: 400px; height: 400px; margin-left: -200px; margin-top: -200px; animation-duration: 15s; }
 .orbit-venus { width: 500px; height: 500px; margin-left: -250px; margin-top: -250px; animation-duration: 20s; }
 .orbit-earth { width: 600px; height: 600px; margin-left: -300px; margin-top: -300px; animation-duration: 25s; }
@@ -104,35 +101,35 @@ nav[class*="fixed"] {
 .orbit-uranus { width: 1100px; height: 1100px; margin-left: -550px; margin-top: -550px; animation-duration: 60s; }
 .orbit-neptune { width: 1200px; height: 1200px; margin-left: -600px; margin-top: -600px; animation-duration: 70s; }
 
-/* Planety na orbitach - ZAWSZE WIDOCZNE NAD SŁOŃCEM */
+
 .hero-planet {
     position: absolute;
-    top: 0;    /* Pozycja na górze orbity */
-    left: 50%; /* Wyśrodkowane w poziomie */
-    transform: translateX(-50%); /* Precyzyjne środkowanie */
+    top: 0;   
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 50%;
-    z-index: 100; /* BARDZO WYSOKI - nad wszystkim! */
+    z-index: 100;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
     transition: transform 0.3s ease;
 }
 
-/* 🐈 ROZMIARY I POZYCJE PLANET - ZMIEŃ 'top' ŻEBY PRZESUNĄĆ PLANETY */
-.hero-planet.mercury { width: 6px; height: 6px; top: -3px; }   /* ← ZMIEŃ 'top' dla Merkurego */
-.hero-planet.venus { width: 8px; height: 8px; top: -4px; }     /* ← ZMIEŃ 'top' dla Wenus */
-.hero-planet.earth { width: 10px; height: 10px; top: -5px; }   /* ← ZMIEŃ 'top' dla Ziemi */
-.hero-planet.mars { width: 8px; height: 8px; top: -4px; }      /* ← ZMIEŃ 'top' dla Marsa */
-.hero-planet.jupiter { width: 16px; height: 16px; top: -8px; } /* ← ZMIEŃ 'top' dla Jowisza */
-.hero-planet.saturn { width: 14px; height: 14px; top: -7px; }  /* ← ZMIEŃ 'top' dla Saturna */
-.hero-planet.uranus { width: 12px; height: 12px; top: -6px; }  /* ← ZMIEŃ 'top' dla Urana */
-.hero-planet.neptune { width: 12px; height: 12px; top: -6px; } /* ← ZMIEŃ 'top' dla Neptuna */
 
-/* Animacja obrotu orbit */
+.hero-planet.mercury { width: 6px; height: 6px; top: -3px; }  
+.hero-planet.venus { width: 8px; height: 8px; top: -4px; }    
+.hero-planet.earth { width: 10px; height: 10px; top: -5px; }  
+.hero-planet.mars { width: 8px; height: 8px; top: -4px; }     
+.hero-planet.jupiter { width: 16px; height: 16px; top: -8px; }
+.hero-planet.saturn { width: 14px; height: 14px; top: -7px; } 
+.hero-planet.uranus { width: 12px; height: 12px; top: -6px; } 
+.hero-planet.neptune { width: 12px; height: 12px; top: -6px; }
+
+
 @keyframes rotate-orbit {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
-/* Spin animation keyframes */
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -142,7 +139,7 @@ nav[class*="fixed"] {
     }
 }
 
-/* Parallax Stars Background - Nieskończone tło gwiazdek */
+
 .stars-layer-1, .stars-layer-2, .stars-layer-3 {
     position: fixed;
     top: 0;
@@ -155,7 +152,7 @@ nav[class*="fixed"] {
     background-attachment: fixed;
 }
 
-/* Warstwa 1 - Duże jasne gwiazdy */
+
 .stars-layer-1 {
     background-image: 
         radial-gradient(2px 2px at 15px 45px, #fff, transparent),
@@ -166,7 +163,7 @@ nav[class*="fixed"] {
     background-size: 400px 300px;
 }
 
-/* Warstwa 2 - Średnie gwiazdy */
+
 .stars-layer-2 {
     background-image: 
         radial-gradient(1px 1px at 60px 30px, rgba(255,255,255,0.7), transparent),
@@ -178,7 +175,7 @@ nav[class*="fixed"] {
     background-size: 500px 400px;
 }
 
-/* Warstwa 3 - Małe gwiazdy */
+
 .stars-layer-3 {
     background-image: 
         radial-gradient(1px 1px at 25px 70px, rgba(255,255,255,0.5), transparent),
@@ -211,9 +208,9 @@ nav[class*="fixed"] {
     z-index: 3;
 }
 
-/* Globalne tło gwiazdek - jednolite na całej stronie */
 
-/* Keyframe Animations */
+
+
 @keyframes twinkle {
     0%, 100% { 
         filter: brightness(0.7);
@@ -223,7 +220,7 @@ nav[class*="fixed"] {
     }
 }
 
-/* STARA animacja pulse-glow - zachowana dla kompatybilności */
+
 @keyframes pulse-glow {
     0% { 
         box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
@@ -235,7 +232,7 @@ nav[class*="fixed"] {
     }
 }
 
-/* NOWA ZOPTYMALIZOWANA animacja - używa tylko transform */
+
 @keyframes pulse-glow-optimized {
     0% { 
         transform: translate(-50%, -50%) scale(1);
@@ -247,7 +244,7 @@ nav[class*="fixed"] {
     }
 }
 
-/* ZOPTYMALIZOWANA animacja dla MOBILE - bardzo lekka */
+
 @keyframes pulse-glow-mobile {
     0% { 
         transform: translate(-50%, -50%) scale(1);
@@ -274,7 +271,7 @@ nav[class*="fixed"] {
     100% { transform: rotate(360deg); }
 }
 
-/* Sun Styles - ZOPTYMALIZOWANE DLA MOBILE */
+
 .sun-container {
     width: 200px;
     height: 200px;
@@ -282,7 +279,7 @@ nav[class*="fixed"] {
     position: relative;
     animation: none !important;
     flex-shrink: 0;
-    will-change: transform; /* Optymalizacja GPU */
+    will-change: transform;
 }
 
 .sun {
@@ -290,7 +287,7 @@ nav[class*="fixed"] {
     height: 200px;
     background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF6347 100%);
     border-radius: 50%;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); /* Zmniejszony blur dla wydajności */
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
     position: relative;
     z-index: 5;
     flex-shrink: 0;
@@ -304,16 +301,16 @@ nav[class*="fixed"] {
     left: 50%;
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%); /* Zmniejszona intensywność */
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%);
     border-radius: 50%;
-    animation: pulse-glow-optimized 4s ease-in-out infinite alternate; /* Nowa zoptymalizowana animacja */
+    animation: pulse-glow-optimized 4s ease-in-out infinite alternate;
     z-index: 1;
     pointer-events: none;
     transform: translate(-50%, -50%);
     will-change: transform, opacity;
 }
 
-/* Sun in planet format - ZOPTYMALIZOWANY */
+
 .planet-visual .sun-container {
     width: 250px;
     height: 250px;
@@ -329,7 +326,7 @@ nav[class*="fixed"] {
     height: 250px;
     background: radial-gradient(circle, #FFD700 0%, #FFA500 50%, #FF6347 100%);
     border-radius: 50%;
-    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); /* Zmniejszony blur */
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
     position: relative;
     z-index: 5;
     flex-shrink: 0;
@@ -343,16 +340,16 @@ nav[class*="fixed"] {
     left: 50%;
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%); /* Zmniejszona intensywność */
+    background: radial-gradient(circle, rgba(255, 165, 0, 0.2) 0%, transparent 60%);
     border-radius: 50%;
-    animation: pulse-glow-optimized 4s ease-in-out infinite alternate; /* Zoptymalizowana animacja */
+    animation: pulse-glow-optimized 4s ease-in-out infinite alternate;
     z-index: 1;
     pointer-events: none;
     transform: translate(-50%, -50%);
     will-change: transform, opacity;
 }
 
-/* Navigation Styles - SIMPLIFIED */
+
 nav {
     width: 100%;
     max-width: 100vw;
@@ -374,7 +371,7 @@ nav h1 {
     max-width: 100%;
 }
 
-/* Dropdown menu styles */
+
 .group .absolute {
     overflow: hidden;
 }
@@ -405,7 +402,7 @@ nav h1 {
     background: rgba(245, 158, 11, 0.1);
 }
 
-/* Removed duplicate nav-link definition */
+
 
 .nav-link::after {
     content: '';
@@ -426,7 +423,7 @@ nav h1 {
     width: 100%;
 }
 
-/* Dropdown button styles */
+
 .group button.nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -451,9 +448,9 @@ nav h1 {
     width: 100%;
 }
 
-/* Removed special styling for home button - now works like other sections */
 
-/* CIEKAWOSTKI - FLIP KARTY NA CAŁĄ SZEROKOŚĆ */
+
+
 .facts-scroll-container {
     overflow-x: auto;
     overflow-y: visible;
@@ -470,15 +467,15 @@ nav h1 {
     align-items: stretch;
     max-width: 1400px;
     margin: 0 auto;
-    flex-wrap: nowrap; /* Zapobiega przepakowaniu */
-    flex-direction: row; /* Wymusza kolejność HTML */
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
-/* Kolejność jest randomizowana przez JavaScript */
 
-/* Responsive flip karty - breakpointy */
+
+
 @media (max-width: 1535px) {
-    /* Poniżej 1535px pokaż tylko 4 karty */
+   
     .facts-scroll-track .fact-item:nth-child(n+5) {
         display: none;
     }
@@ -496,7 +493,7 @@ nav h1 {
 }
 
 @media (max-width: 1280px) {
-    /* Poniżej 1280px pokaż tylko 3 karty */
+   
     .facts-scroll-track .fact-item:nth-child(n+4) {
         display: none;
     }
@@ -515,7 +512,7 @@ nav h1 {
         max-width: 400px;
     }
     
-    /* Reguła nth-child przeniesiona do @media (max-width: 1280px) */
+   
 }
 
 @media (max-width: 900px) {
@@ -530,7 +527,7 @@ nav h1 {
         height: 250px;
     }
     
-    /* Na małych ekranach pokaż tylko pierwsze 2 ciekawostki */
+   
     .facts-scroll-track .fact-item:nth-child(n+3) {
         display: none;
     }
@@ -555,7 +552,7 @@ nav h1 {
     }
 }
 
-/* FLIP KARTY - AUTOMATYCZNY ROZMIAR */
+
 .facts-scroll-track .fact-item {
     flex: 1;
     min-width: 250px;
@@ -642,13 +639,13 @@ nav h1 {
     transform: rotateY(180deg);
     flex-direction: column;
     text-align: left;
-    justify-content: flex-start; /* Zmienione z center */
+    justify-content: flex-start;
     align-items: flex-start;
     z-index: 1;
-    overflow-y: auto; /* Pozwól scroll na desktop */
+    overflow-y: auto;
 }
 
-/* Dostosowanie tekstu w ciekawostkach */
+
 .facts-scroll-track .fact-item .card-back h3 {
     font-size: 0.9rem !important;
     line-height: 1.1 !important;
@@ -669,17 +666,17 @@ nav h1 {
     margin-bottom: 0.3rem !important;
 }
 
-/* Usunięta problematyczna definicja .fact-item z height: 200px */
+
 
 .fact-item:hover .bg-gradient-to-br {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
 }
 
-/* Usunięte problematyczne animacje fact-appear i fact-disperse */
-/* Teraz ciekawostki przewijają się płynnie bez dodatkowych animacji */
 
-/* Event Cards Styles */
+
+
+
 .event-card {
     position: relative;
     overflow: hidden;
@@ -705,7 +702,7 @@ nav h1 {
     transform: translateY(-5px) scale(1.02);
 }
 
-/* Special event status styles */
+
 .event-card.event-today {
     animation: pulse-gold 2s ease-in-out infinite;
 }
@@ -736,7 +733,7 @@ nav h1 {
     }
 }
 
-/* Planet Styles */
+
 .planet-card {
     opacity: 0;
     transform: translateY(50px);
@@ -759,12 +756,12 @@ nav h1 {
     position: relative;
     width: 250px;
     height: 250px;
-    border: none; /* Remove purple orbit */
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: none; /* Remove orbit animation */
+    animation: none;
 }
 
 .planet {
@@ -781,7 +778,7 @@ nav h1 {
     filter: brightness(1.2);
 }
 
-/* Individual Planet Colors */
+
 .mercury {
     background: radial-gradient(circle at 30% 30%, #8C7853 0%, #5C5C5C  100%);
     box-shadow: 0 0 20px rgba(140, 120, 83, 0.5);
@@ -824,7 +821,7 @@ nav h1 {
     box-shadow: 0 0 20px rgba(75, 112, 221, 0.5);
 }
 
-/* Moon for Earth - powiększony */
+
 .moon {
     position: absolute;
     width: 25px;
@@ -836,7 +833,7 @@ nav h1 {
     animation: orbit 8s linear infinite;
 }
 
-/* Jupiter Moons */
+
 .jupiter-moons {
     position: absolute;
     width: 100%;
@@ -879,7 +876,7 @@ nav h1 {
     animation: orbit 12s linear infinite;
 }
 
-/* Mars Moons */
+
 .mars-moons {
     position: absolute;
     width: 100%;
@@ -904,7 +901,7 @@ nav h1 {
     animation: orbit 7s linear infinite;
 }
 
-/* Saturn Moons */
+
 .saturn-moons {
     position: absolute;
     width: 100%;
@@ -929,7 +926,7 @@ nav h1 {
     animation: orbit 9s linear infinite;
 }
 
-/* Uranus Moons */
+
 .uranus-moons {
     position: absolute;
     width: 100%;
@@ -954,7 +951,7 @@ nav h1 {
     animation: orbit 10s linear infinite;
 }
 
-/* Neptune Moons */
+
 .neptune-moons {
     position: absolute;
     width: 100%;
@@ -967,10 +964,10 @@ nav h1 {
     background: #B0E0E6;
     top: -40px;
     right: -30px;
-    animation: orbit 14s linear infinite reverse; /* Retrograde orbit */
+    animation: orbit 14s linear infinite reverse;
 }
 
-/* Saturn Rings - dostosowane do większej planety */
+
 .saturn-rings {
     position: absolute;
     top: 50%;
@@ -986,7 +983,7 @@ nav h1 {
         0 0 0 12px rgba(255, 215, 0, 0.2);
 }
 
-/* Uranus Rings - dostosowane do większej planety */
+
 .uranus-rings {
     position: absolute;
     top: 50%;
@@ -999,7 +996,7 @@ nav h1 {
     box-shadow: 0 0 0 4px rgba(79, 208, 231, 0.2);
 }
 
-/* Facts Grid */
+
 .facts-grid {
     gap: 1rem;
 }
@@ -1016,23 +1013,21 @@ nav h1 {
     visibility: visible;
 }
 
-/* Text justification for planet and sun descriptions */
+
 .planet-info p.text-lg,
 .planet-info p.text-gray-300 {
     text-align: justify;
     line-height: 1.7;
 }
 
-/* ============================
-   NOWA MAPA ORBIT - rzeczywiste pozycje
-   ============================ */
+
 #real-orbit-map {
     height: 600px;
     position: relative;
     overflow: visible;
 }
 
-/* Planety na mapie orbit */
+
 .real-planet {
     position: absolute;
     top: 50%;
@@ -1047,7 +1042,7 @@ nav h1 {
     transform: translate(-50%, -50%) scale(1.2);
 }
 
-/* Ramki z nazwami planet - nad planetami */
+
 .planet-label-frame {
     position: absolute;
     top: -35px;
@@ -1072,12 +1067,12 @@ nav h1 {
     backdrop-filter: blur(4px);
 }
 
-/* Stary styl planet-name dla kompatybilności */
+
 .planet-name {
     display: none;
 }
 
-/* Orbity (pierścienie) */
+
 .orbit-ring {
     border-width: 1px;
     z-index: 5;
@@ -1093,7 +1088,7 @@ nav h1 {
     animation: pulse-glow 2s ease-in-out infinite alternate;
 }
 
-/* Napis Słońca usunięty */
+
 
 @keyframes pulse-glow {
     from { box-shadow: 0 0 20px #FF4500; }
@@ -1110,7 +1105,7 @@ nav h1 {
     z-index: 5;
 }
 
-/* Zaktualizowane rozmiary orbit - równomierne odstępy */
+
 .orbit-1 { width: 120px; height: 120px; }
 .orbit-2 { width: 170px; height: 170px; }
 .orbit-3 { width: 220px; height: 220px; }
@@ -1145,17 +1140,17 @@ nav h1 {
     to   { transform: rotate(360deg); }
 }
 
-/* Animacje orbit wyłączone - pozycje kontrolowane przez JavaScript w czasie rzeczywistym */
+
 .mercury-orbit, .venus-orbit, .earth-orbit, .mars-orbit, 
 .jupiter-orbit, .saturn-orbit, .uranus-orbit, .neptune-orbit {
     animation: none;
 }
 
-/* Pozycje planet kontrolowane przez JavaScript w czasie rzeczywistym */
 
-/* Pozycje planet kontrolowane tylko przez JavaScript - brak początkowych pozycji */
 
-/* Planety */
+
+
+
 .mini-planet {
     width: 20px;
     height: 20px;
@@ -1166,9 +1161,9 @@ nav h1 {
     display: block;
 }
 
-/* Usunięte - zastąpione przez nowy styl planet-label-frame */
 
-/* Kolory planet */
+
+
 .mercury-mini { background: radial-gradient(circle, #8C7853 0%, #5C5C5C 100%); }
 .venus-mini   { background: radial-gradient(circle, #FFC649 0%, #FF8C00 100%); }
 .earth-mini   { background: radial-gradient(circle, #6B93D6 0%, #228B22 100%); }
@@ -1201,9 +1196,9 @@ nav h1 {
 .uranus-mini  { background: radial-gradient(circle, #AFEEEE 0%, #4682B4 100%); }
 .neptune-mini { background: radial-gradient(circle, #4169E1 0%, #191970 100%); }
 
-/* Removed real-time indicator */
 
-/* Facts Slider */
+
+
 .facts-slider {
     position: relative;
     height: 300px;
@@ -1277,12 +1272,12 @@ nav h1 {
     background: rgba(139, 92, 246, 0.7);
 }
 
-/* CTA Buttons - NAD PLANETAMI */
+
 .cta-button, .cta-link {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    z-index: 200; /* Wyżej niż planety (z-index: 100) */
+    z-index: 200;
 }
 
 .cta-button:hover, .cta-link:hover {
@@ -1303,25 +1298,25 @@ nav h1 {
     left: 100%;
 }
 
-/* Hero Section - ZOPTYMALIZOWANE ANIMACJE na tablets i mobile */
+
 @media (max-width: 1024px) {
-    /* Ukryj system orbit na tablets/mobile dla wydajności */
+   
     #hero-solar-system {
         display: none !important;
     }
     
-    /* Słońce statyczne, bez rotacji */
+   
     #hero .sun-container {
         animation: none !important;
         transform: none !important;
     }
     
-    /* Zmniejszona animacja glow dla wydajności */
+   
     #hero .sun-glow {
         animation: pulse-glow-mobile 5s ease-in-out infinite alternate !important;
     }
     
-    /* Mniejsze słońce na tablets */
+   
     #hero .sun-container,
     #hero .sun {
         width: 180px !important;
@@ -1334,14 +1329,14 @@ nav h1 {
     }
 }
 
-/* Mobile Responsive Improvements */
+
 @media (max-width: 768px) {
-    /* WYŁĄCZ GWIAZDY na mobile dla wydajności */
+   
     .stars-layer-1, .stars-layer-2, .stars-layer-3 {
         display: none !important;
     }
     
-    /* Navigation mobile improvements */
+   
     nav .container {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
@@ -1373,13 +1368,13 @@ nav h1 {
         margin-bottom: 1rem;
     }
     
-    /* Fix container spacing */
+   
     .container {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
     }
     
-    /* Planet sections mobile */
+   
     .planet-card {
         margin-bottom: 3rem !important;
     }
@@ -1397,7 +1392,7 @@ nav h1 {
         order: 2 !important;
     }
     
-    /* Sun section mobile - zmniejszone słońce dla wydajności */
+   
     .planet-visual .sun-container {
         width: 180px !important;
         height: 180px !important;
@@ -1406,7 +1401,7 @@ nav h1 {
     .planet-visual .sun {
         width: 180px !important;
         height: 180px !important;
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important; /* Bardzo mały blur */
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
     }
     
     .planet-visual .sun-glow {
@@ -1416,7 +1411,7 @@ nav h1 {
         opacity: 0.5 !important;
     }
     
-    /* Facts grid mobile - 2 rzędy, kompaktowo */
+   
     .facts-grid {
         display: grid !important;
         grid-template-columns: 1fr 1fr 1fr !important;
@@ -1449,13 +1444,13 @@ nav h1 {
         margin-bottom: 0.2rem;
     }
     
-    /* Hide orbit map on mobile - show message instead */
+   
     .orbit-system,
     #real-orbit-map {
         display: none !important;
     }
     
-    /* Mobile message for orbit map */
+   
     #orbit-map::after {
         content: "💻 Dla poprawnego działania aktualnej mapy orbit proszę używać komputer";
         display: block;
@@ -1472,7 +1467,7 @@ nav h1 {
         box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
     }
     
-    /* All orbit elements hidden on mobile */
+   
     .orbit-line,
     .sun-center,
     .orbit-planet,
@@ -1481,7 +1476,7 @@ nav h1 {
         display: none !important;
     }
     
-    /* Facts mobile - PROSTA ciekawostka BEZ flip animacji */
+   
     .facts-scroll-container {
         padding: 2rem 1rem !important;
     }
@@ -1494,23 +1489,23 @@ nav h1 {
         padding: 0 !important;
     }
     
-    /* Ukryj wszystkie poza pierwszą ciekawostką */
+   
     .facts-scroll-track .fact-item:not(:first-child) {
         display: none !important;
     }
     
-    /* PROSTA KARTA - bez flip animacji */
+   
     .facts-scroll-track .fact-item {
         width: 100% !important;
         max-width: 350px !important;
         min-width: 280px !important;
-        height: auto !important; /* Automatyczna wysokość */
+        height: auto !important;
         margin: 0 !important;
-        cursor: default !important; /* Brak kursora pointer */
-        perspective: none !important; /* Bez 3D */
+        cursor: default !important;
+        perspective: none !important;
     }
     
-    /* Ukryj flip structure - pokaż tylko treść */
+   
     .facts-scroll-track .fact-item .fact-card {
         transform: none !important;
         position: static !important;
@@ -1518,11 +1513,11 @@ nav h1 {
     }
     
     .facts-scroll-track .fact-item .fact-card-front {
-        display: none !important; /* Ukryj przodnią kartę */
+        display: none !important;
     }
     
     .facts-scroll-track .fact-item .fact-card-back {
-        transform: none !important; /* Usuń rotateY */
+        transform: none !important;
         position: static !important;
         backface-visibility: visible !important;
         background: rgba(15, 15, 35, 0.8) !important;
@@ -1548,7 +1543,7 @@ nav h1 {
         color: #D1D5DB !important;
     }
     
-    /* Typography mobile */
+   
     h1, h2 {
         font-size: 2rem !important;
     }
@@ -1565,7 +1560,7 @@ nav h1 {
         font-size: 2rem !important;
     }
     
-    /* Mobile orbit animations - updated for new sizes */
+   
     .orbit-1 .mini-planet { transform: translateX(60px); }
     .orbit-2 .mini-planet { transform: translateX(85px); }
     .orbit-3 .mini-planet { transform: translateX(110px); }
@@ -1575,7 +1570,7 @@ nav h1 {
     .orbit-7 .mini-planet { transform: translateX(210px); }
     .orbit-8 .mini-planet { transform: translateX(235px); }
     
-    /* Updated mobile orbit sizes to match new equal spacing */
+   
     .orbit-1 { width: 120px; height: 120px; }
     .orbit-2 { width: 170px; height: 170px; }
     .orbit-3 { width: 220px; height: 220px; }
@@ -1595,9 +1590,9 @@ nav h1 {
         font-size: 1rem;
     }
     
-    /* Sun mobile - MAKSYMALNIE ZOPTYMALIZOWANE */
+   
     #hero .sun-container {
-        width: 120px !important; /* Jeszcze mniejsze dla wydajności */
+        width: 120px !important;
         height: 120px !important;
         animation: none !important;
         margin: 1.5rem auto !important;
@@ -1608,7 +1603,7 @@ nav h1 {
         width: 120px !important;
         height: 120px !important;
         animation: none !important;
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important; /* Bardzo mały blur */
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.4) !important;
         transform: none !important;
     }
     
@@ -1616,22 +1611,22 @@ nav h1 {
         width: 120px !important;
         height: 120px !important;
         transform: translate(-50%, -50%) !important;
-        animation: pulse-glow-mobile 6s ease-in-out infinite alternate !important; /* Wolniejsza animacja */
-        opacity: 0.6 !important; /* Zmniejszona intensywność */
+        animation: pulse-glow-mobile 6s ease-in-out infinite alternate !important;
+        opacity: 0.6 !important;
     }
     
-    /* Hide orbiting planets on mobile - keep only sun */
+   
     #hero .animate-spin {
         display: none !important;
     }
     
-    /* Show only the sun container */
+   
     #hero .sun-container {
         display: block !important;
     }
 }
 
-/* Small screens - hide orbit map when planets extend beyond frame */
+
 @media (max-width: 1024px) {
     #real-orbit-map {
         display: none !important;
@@ -1654,7 +1649,7 @@ nav h1 {
     }
 }
 
-/* Extra small screens - better spacing */
+
 @media (max-width: 480px) {
     nav .container {
         padding-left: 1rem !important;
@@ -1671,13 +1666,13 @@ nav h1 {
         font-size: 1.25rem;
     }
     
-    /* Better container spacing */
+   
     .container {
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
     }
     
-    /* Facts grid single column on very small screens */
+   
     .facts-grid {
         grid-template-columns: 1fr !important;
     }
@@ -1688,14 +1683,14 @@ nav h1 {
         margin: 0 auto;
     }
     
-    /* Mobile message smaller on very small screens */
+   
     #orbit-map::after {
         font-size: 0.9rem !important;
         padding: 2rem 1.5rem !important;
         max-width: 280px !important;
     }
     
-    /* Facts very small screens - single centered fact */
+   
     .facts-scroll-track .fact-item:first-child {
         min-width: 95% !important;
         max-width: 95% !important;
@@ -1715,7 +1710,7 @@ nav h1 {
     }
 }
 
-/* Scroll Animations */
+
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
@@ -1727,7 +1722,7 @@ nav h1 {
     transform: translateY(0);
 }
 
-/* Gradient Text */
+
 .gradient-text {
     background: linear-gradient(45deg, #8B5CF6, #3B82F6, #F59E0B);
     background-size: 200% 200%;
@@ -1744,7 +1739,7 @@ nav h1 {
     100% { background-position: 0% 50%; }
 }
 
-/* Loading Animation */
+
 .loading {
     opacity: 0;
     animation: fadeIn 0.5s ease-in-out forwards;
